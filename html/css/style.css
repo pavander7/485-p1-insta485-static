@@ -1,0 +1,46 @@
+a {text-decoration: none;}
+a:link, a:visited {color:indigo;}
+a:hover {color:teal;}
+a:active {color:deepskyblue;}
+body {
+    background-color: lavender;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 18pt;
+    padding: 20px;
+    color: midnightblue;
+}
+.post-main {
+    background-color: aliceblue;
+    border: 1px solid black;
+    margin-left: 250px;
+    margin-right: 250px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+.post-header {
+    background-color: hotpink;
+    border-bottom: 1px solid black;
+    padding: 5px;
+}
+.post-image {
+    background-color: aliceblue;
+    width:max-content;
+    margin: auto;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+}
+.post-footer {
+    background-color: whitesmoke;
+    border-top: 1px solid black;
+}
+.post-likebar {
+    background-color: cornsilk;
+    padding: 5px;
+    border-bottom: 1px solid gainsboro;
+}
+.comment {
+    margin: 5px;
+    border: 1px solid gainsboro;
+    background-color: lavenderblush;
+    padding: 2px;
+}
