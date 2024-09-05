@@ -2,7 +2,7 @@
 #
 # insta485test
 #
-# Clean, build and start server
+# Run tests, validate python style, clean, build, and validate HTML
 #
 # Paul Vander Woude <pavander@umich.edu>
 
