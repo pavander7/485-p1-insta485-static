@@ -42,56 +42,65 @@ def main(input_dir, output, verbose):
 
     # ----STEP 02: PROCESS CONFIG W/ JSON----
 
-    # extract dictionary from cofig.json
+    # extract dictionaries from cofig.json
     try:
-        dictionary = dictionary_get(config_filename=config_filename)
+        dictionaries = dictionaries_get(config_filename=config_filename)
 
     # INVARIANT: config.json must be valid
     except (JSONDecodeError) as err:
         print(f"insta485generator error: {config_filename}")
         print(err)
         sys.exit(3)
+    
+    # ----STEP 03: PROCESS TEMPLATES W/ JINJA2
 
-    # extract url from dictionary & strip leading '/'
-    url = dictionary.get('url')
-    url = url.lstrip("/")
+    # loop through templates
+    for dict in dictionaries:
 
-    # extract template from dictionary
-    template_file = dictionary.get('template')
+        # --STEP 03A: EXTRACT INFORMATION--
 
-    # extract context from dictionary
-    context = dictionary.get('context')
+        # extract url from dictionaries & strip leading '/'
+        url = dict.get('url')
+        url = url.lstrip("/")
 
-    # ----STEP 03: RENDER TEMPLATE W/ JINJA2----
+        # extract template from dictionaries
+        template_file = dict.get('template')
 
-    # render template using values extracted from dictionary
-    try:
-        render = render_template(template_dir=input_dir / 'templates',
-                                 template_file=template_file, data=context)
+        # extract context from dictionaries
+        context = dict.get('context')
 
-    # INVARIANT: template must be valid
-    except (jinja2.exceptions.TemplateError) as err:
-        print(f"insta485generator error: '{template_file}")
-        print(err)
-        sys.exit(4)
+        # --STEP 03B: RENDER TEMPLATE W/ JINJA2--
 
-    # write to output
-    output_path = scribe(render=render, output_dir=output_dir, url=url)
+        # render template using values extracted from dictionaries
+        try:
+            render = render_template(template_dir=input_dir / 'templates',
+                                    template_file=template_file, data=context)
 
-    # CHATTY CATHY
-    if verbose:
-        print(f"Rendered index.html -> {output_path}")
+        # INVARIANT: template must be valid
+        except (jinja2.exceptions.TemplateError) as err:
+            print(f"insta485generator error: '{template_file}")
+            print(err)
+            sys.exit(4)
+
+        # ---STEP 03C: WRITE TO OUTPUT--
+
+        # write to output
+        output_path = scribe(render=render, output_dir=output_dir, url=url)
+
+        # CHATTY CATHY
+        if verbose:
+            print(f"Rendered index.html -> {output_path}")
 
     # ----STEP 04: COPY STATIC DIR (OPTIONAL)----
     static_copy(input_dir=input_dir, output_dir=output_dir, verbose=verbose)
 
 
 # CONTEXT MANAGER
-def dictionary_get(config_filename):
-    """Context manager for dictionary retrieval from config.json."""
+def dictionaries_get(config_filename):
+    """Context manager for dictionaries retrieval from config.json."""
     with config_filename.open() as config_file:
         #  config_filename is open within this code block
-        return load(config_file)[0]
+        return load(config_file)
     #  config_filename is automatically closed
 
 
