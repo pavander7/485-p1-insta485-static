@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>insta485</title>
+        <link rel="stylesheet" href="/css/style.css">
+    </head>
+    <body>
+        <header>
+            <a href = "/">
+                <img src="/images/logo.png" alt="return to homepage" style="width:500px;">
+            </a>
+            <span style="float: right;">
+                <a href="/explore/">explore</a>
+                 | 
+                <a href="/users/<logged-in-user>/"><logged-in-user></a>
+            </span>
+        </header>
+        <hr>
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>
