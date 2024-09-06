@@ -3,9 +3,23 @@
 {% for post in posts %}
 <div class="post">
     <div class="post-header">
-        <a href="/users/<user_url_slug>/"><img src="<owner_image_url>" alt="Profile Picture" style="width:50px"></a>
-        <h1><a href="/users/<user_url_slug>/">{{logname}}</a></h1>
-        
+        <a href="/users/{{ post.owner }}"/"><img class="profile-pic" src="{{ post.owner_img_url }"} alt="Profile Picture"></a>
+        <h1><a href="/users/{{ post.owner }}/">{{ logname }}</a></h1>
+        <span style="float: right;"><a href="/posts/{{ post.postid }}/">{{ post.timestamp }}</a></span>
+    </div>
+    <img src="{{ post.img_url }}">
+    <div class="post-footer">
+        <div class="post-likebar">
+            {{ post.likes }} like
+            {% if post.likes != "1" %}
+            s
+            {% endif %}
+        </div>
+        {% for comment in comments %}
+            <div class="comment">
+                <b><a href="/users/{{ comment.owner }}">{{ comment.text }}</a></b>
+            </div>
+        {% endfor %}
     </div>
 </div>
 {% endfor %}
