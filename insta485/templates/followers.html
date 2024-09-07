@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Followers</h2>
+{% for follower in followers %}
+<div class="follow-card">
+    <img class="profile-pic" src="{{ follower.user_img_url }}" alt="Profile Picture of {{ follower.username }}">
+    <a href="/users/{{ follower.username }}/">{{ follower.username }}</a>
+    {% if logname_follows_username %}
+    following
+    {% elif logname != username %}
+    not following
+    {% endif %}
+</div>
+{% endfor %}
+{% endblock %}
