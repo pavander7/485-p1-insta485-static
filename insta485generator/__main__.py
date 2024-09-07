@@ -48,7 +48,7 @@ def main(input_dir, output, verbose):
 
     # INVARIANT: config.json must be valid
     except (JSONDecodeError) as err:
-        print(f"insta485generator error: {config_filename}")
+        print(f"insta485generator error: '{config_filename}'")
         print(err)
         sys.exit(3)
     
@@ -78,7 +78,7 @@ def main(input_dir, output, verbose):
 
         # INVARIANT: template must be valid
         except (jinja2.exceptions.TemplateError) as err:
-            print(f"insta485generator error: '{template_file}")
+            print(f"insta485generator error: '{template_file}'")
             print(err)
             sys.exit(4)
 
