@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="post">
+    <div class="post-header">
+        <a href="/users/{{ owner }}"/"><img class="profile-pic" src="{{ owner_img_url }}" alt="Profile Picture"></a>
+        <h1><a href="/users/{{ owner }}/">{{ logname }}</a></h1>
+        <span style="float: right;"><a href="/posts/{{ postid }}/">{{ timestamp }}</a></span>
+    </div>
+    <img src="{{ img_url }}">
+    <div class="post-footer">
+        <div class="post-likebar">
+            {{ likes }}
+            {% if likes != "1" %}
+            likes
+            {% else %}
+            like
+            {% endif %}
+        </div>
+        {% for comment in comments %}
+            <div class="comment">
+                <b><a href="/users/{{ comment.owner }}">{{ comment.owner }}</a></b>
+                {{ comment.text }}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
