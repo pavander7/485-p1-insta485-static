@@ -12,7 +12,7 @@ set -Eeuo pipefail
 set -x
 
 # Run all tests
-pytest test/
+pytest tests/
 
 # Run pycodestyle, pydocstyle, pylint
 pycodestyle insta485generator
