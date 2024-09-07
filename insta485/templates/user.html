@@ -30,7 +30,7 @@
     </div>
     <div id="userpage-gallery">
         {% for post in posts %}
-        <a href="/posts/{{ post.post_id }}/">
+        <a href="/posts/{{ post.postid }}/">
             <img class="gallery-img" src="{{ post.img_url }}" alt="Post {{ post.postid }}">
         </a>
         {% endfor %}
