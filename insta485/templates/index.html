@@ -7,7 +7,7 @@
         <h1><a href="/users/{{ post.owner }}/">{{ logname }}</a></h1>
         <span style="float: right;"><a href="/posts/{{ post.postid }}/">{{ post.timestamp }}</a></span>
     </div>
-    <img src="{{ post.img_url }}">
+    <img class="post-img" src="{{ post.img_url }}">
     <div class="post-footer">
         <div class="post-likebar">
             {{ post.likes }}
