@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Discover People</h2>
+{% for user in not_following %}
+<div class="follow-card">
+    <img class="profile-pic" src="{{ follower.user_img_url }}" alt="Profile Picture of {{ follower.username }}">
+    <a href="/users/{{ follower.username }}/">{{ follower.username }}</a>
+</div>
+{% endfor %}
+{% endblock %}
