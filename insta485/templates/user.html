@@ -3,7 +3,7 @@
     <div id="userpage-header">
         <div id="usernamebar">
             <h2>
-                <b>{{% username %}}</b>
+                <b>{{ username }}</b>
                 | 
                 {% if logname_follows_username %}
                 following
@@ -14,9 +14,16 @@
         </div>
         <div id="infobar">
             {{ total_posts }}
-            {% if total_posts != 1 %}s{% endif %}
+            {% if total_posts != 1 %}
+            posts
+            {% else %}
+            post
+            {% endif %}
+            {% if followers != 1 %}
+            <a href="/users/{{ username }}/followers/">{{ followers }} followers</a>
+            {% else %}
             <a href="/users/{{ username }}/followers/">{{ followers }} follower</a>
-            {% if followers != 1 %}s{% endif %}
+            {% endif %}
             <a href="/users.{{ username }}/following/">{{ following }} following</a>
         </div>
         <div id="namebar">{{ fullname }}</div>
