@@ -51,30 +51,30 @@ def main(input_dir, output, verbose):
         print(f"insta485generator error: '{config_filename}'")
         print(err)
         sys.exit(3)
-    
+
     # ----STEP 03: PROCESS TEMPLATES W/ JINJA2
 
     # loop through templates
-    for dict in dictionaries:
+    for book in dictionaries:
 
         # --STEP 03A: EXTRACT INFORMATION--
 
         # extract url from dictionaries & strip leading '/'
-        url = dict.get('url')
+        url = book.get('url')
         url = url.lstrip("/")
 
         # extract template from dictionaries
-        template_file = dict.get('template')
+        template_file = book.get('template')
 
         # extract context from dictionaries
-        context = dict.get('context')
+        context = book.get('context')
 
         # --STEP 03B: RENDER TEMPLATE W/ JINJA2--
 
         # render template using values extracted from dictionaries
         try:
             render = render_template(template_dir=input_dir / 'templates',
-                                    template_file=template_file, data=context)
+                                     template_file=template_file, data=context)
 
         # INVARIANT: template must be valid
         except (jinja2.exceptions.TemplateError) as err:

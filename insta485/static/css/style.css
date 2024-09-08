@@ -9,7 +9,7 @@ body {
     padding: 20px;
     color: midnightblue;
 }
-.post-main {
+.content {
     background-color: aliceblue;
     border: 1px solid black;
     margin-left: 250px;
@@ -17,14 +17,20 @@ body {
     margin-top: 20px;
     margin-bottom: 15px;
 }
+.follow-card {
+    margin: 5px;
+    border: 1px solid gainsboro;
+    background-color: lavenderblush;
+    padding: 2px;
+}
 .post-header {
     background-color: hotpink;
     border-bottom: 1px solid black;
     padding: 5px;
 }
-.post-image {
+.post-img {
     background-color: aliceblue;
-    width:max-content;
+    width:95%;
     margin: auto;
 }
 .post-footer {
@@ -42,26 +48,29 @@ body {
     background-color: lavenderblush;
     padding: 2px;
 }
-.userpage-main {
+#content {
     background-color: aliceblue;
     width: 85%;
     margin: auto;
 }
-.userpage-header {
+#userpage-header {
     background-color: cornsilk;
 }
-.userpage-username {
+#userpage-username {
     color: midnightblue;
 }
-.userpage-gallery {
+#userpage-gallery {
     background-color: lavenderblush;
     display: grid;
     grid-template-columns: 50% 50%;
 }
-.gallery-image {
+.gallery-img {
     width: 30%;
     display: inline-block;
     padding: 15px;
     margin-left: 5px;
     margin-right: 5px;
+}
+.profile-pic {
+    width: 50px;
 }

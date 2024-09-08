@@ -3,11 +3,11 @@
 <h2>Following</h2>
 {% for follow in following %}
 <div class="follow-card">
-    <img class="profile-pic" src="{{ follow.user_img_url }}" alt="Profile Picture of {{ follow.username }}">
+    <img class="profile-pic" src="{{ follow.user_img_url }}" alt="Profile Picture of {{ follow.username }}" style="width: 50px">
     <a href="/users/{{ follow.username }}/">{{ follow.username }}</a>
-    {% if logname_follows_username %}
+    {% if follow.logname_follows_username %}
     following
-    {% elif logname != username %}
+    {% elif logname != follow.username %}
     not following
     {% endif %}
 </div>

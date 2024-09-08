@@ -2,15 +2,15 @@
 {% block content %}
 <div class="post">
     <div class="post-header">
-        <a href="/users/{{ owner }}"/"><img class="profile-pic" src="{{ owner_img_url }}" alt="Profile Picture"></a>
-        <h1><a href="/users/{{ owner }}/">{{ logname }}</a></h1>
+        <a href="/users/{{ owner }}/"><img class="profile-pic" src="{{ owner_img_url }}" alt="Profile Picture" style="width: 75px"></a>
+        <a href="/users/{{ owner }}/">{{ logname }}</a>
         <span style="float: right;"><a href="/posts/{{ postid }}/">{{ timestamp }}</a></span>
     </div>
-    <img src="{{ img_url }}">
+    <img src="{{ img_url }}" alt="Post {{ postid }}">
     <div class="post-footer">
         <div class="post-likebar">
             {{ likes }}
-            {% if likes != "1" %}
+            {% if likes != 1 %}
             likes
             {% else %}
             like
@@ -18,7 +18,7 @@
         </div>
         {% for comment in comments %}
             <div class="comment">
-                <b><a href="/users/{{ comment.owner }}">{{ comment.owner }}</a></b>
+                <b><a href="/users/{{ comment.owner }}/">{{ comment.owner }}</a></b>
                 {{ comment.text }}
             </div>
         {% endfor %}
